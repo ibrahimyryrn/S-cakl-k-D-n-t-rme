@@ -1,27 +1,28 @@
-const wordInput = document.getElementById('word');
-const button = document.querySelector('button');
-const translatedDiv = document.getElementById('translatedDiv');
-const title = document.getElementById('title');
-const meaning = document.getElementById('meaning');
-const audio = document.getElementById('audio');
+const celcius = document.getElementById('celcius');
+const fahrenheit = document.getElementById('fahrenheit');
+const kelvin = document.getElementById('kelvin');
 
 
 
-
-async function fetchApi(){
-    const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${wordInput.value}`;
-    const result = await fetch(url).then((res) => res.json());
-    console.log(result);
-    if (result.title){
+function calculateTemp(event){
+    const currentValue = Number(event.target.value);
     
+    switch(event.target.name){
+        case 'celcius':
+            fahrenheit.value = (currentValue * 1.8 + 32).toFixed(2);
+            kelvin.value = (currentValue + 273.32).toFixed(2); 
+            break;
+        case 'fahrenheit':
+            celcius.value = ((currentValue - 32) / 1.8).toFixed(2);
+            kelvin.value = ((currentValue - 32) / 1.8 + 273.32).toFixed(2);  
+            break;
+        case 'kelvin':
+            celcius.value = (currentValue - 273.32).toFixed(2);
+            fahrenheit.value = ((currentValue - 273.32) * 1.8 + 32).toFixed(2);
+            break;
+        default:
+            break;    
     }
-    else{
-        translatedDiv.style.display = 'block';
-        title.textContent = result[0].word;
-        meaning.textContent = result[0].meanings[0].definitions[0].definition;
-        audio.src = result[0].phonetics[0].audio;
-    }
+        
 }
 
-
-button.addEventListener('click',fetchApi)
