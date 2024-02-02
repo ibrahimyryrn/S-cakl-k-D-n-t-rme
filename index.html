@@ -4,20 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Sözlük</title>
+    <title>Sıcaklık Dönüştürme</title>
 </head>
 
 <body>
     <div class="container">
-        <h1 class="heading">English-English Dictionary</h1>
-        <input type="text" class="word" id="word" placeholder="Enter a word">
-        <button>Translate</button>
-        <div class="translatedDiv" id="translatedDiv">
-            <p>Word: <span class="title" id="title"></span></p>
-            <p>Meaning: <span class="meaning" id="meaning"></span></p>
-            <audio src=""  controls id="audio"></audio>
+        <h1 class="heading">Hava Sıcaklığı Çevirici</h1>
+        <div class="tempDiv">
+            <label>Celcius:</label>
+            <input onchange="calculateTemp(event)" type="number"  class="tempInput" name="celcius" id="celcius" placeholder="Hava kaç derece?">
+        </div>
+        <div class="tempDiv">
+            <label>Fahrenheit:</label>
+            <input onchange="calculateTemp(event)" type="number"  class="tempInput" name="fahrenheit" id="fahrenheit" placeholder="Hava kaç derece?">
+        </div>
+        <div class="tempDiv">
+            <label>Kelvin:</label>
+            <input onchange="calculateTemp(event)" type="number"  class="tempInput" name="kelvin" id="kelvin" placeholder="Hava kaç derece?">
         </div>
     </div>
+
 
 
 
